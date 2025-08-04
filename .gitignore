@@ -3,6 +3,7 @@
 .idea/
 *.user
 *.suo
+*.DotSettings.user
 
 # Build results
 bin/
