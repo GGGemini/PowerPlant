@@ -4,6 +4,7 @@ using AutoMapper;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
+using PowerPlant.Api;
 using PowerPlant.Api.Dtos.Requests;
 using PowerPlant.Api.Services;
 using Xunit;

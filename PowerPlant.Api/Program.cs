@@ -1,16 +1,13 @@
-using System;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PowerPlant.Api.Data;
 using PowerPlant.Api.Filters;
 using PowerPlant.Api.Services;
+
+namespace PowerPlant.Api;
 
 public class Program
 {
@@ -79,6 +76,7 @@ public class Program
         builder.Services.AddControllers();
 
         // Services
+        builder.Services.AddScoped<IAuthService, AuthService>();
         builder.Services.AddScoped<IStationService, StationService>();
         builder.Services.AddScoped<IEnergyBlockService, EnergyBlockService>();
 
