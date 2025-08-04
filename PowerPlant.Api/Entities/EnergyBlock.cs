@@ -1,3 +1,5 @@
+using System;
+
 namespace PowerPlant.Api.Entities;
 
 public class EnergyBlock

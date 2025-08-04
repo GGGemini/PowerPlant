@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace PowerPlant.Api.Entities;
 
 public class Role
