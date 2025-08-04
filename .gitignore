@@ -1,0 +1,37 @@
+# IDE
+.vs/
+.idea/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+out/
+
+# NuGet
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Rider
+.idea/
+
+# User-specific files
+*.swp
+*.bak
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Others (опционально)
+*.db
