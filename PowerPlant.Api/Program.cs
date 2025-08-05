@@ -1,6 +1,12 @@
+using System;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PowerPlant.Api.Data;
@@ -11,7 +17,7 @@ namespace PowerPlant.Api;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -87,6 +93,12 @@ public class Program
         builder.Services.AddAutoMapper(_ => { }, typeof(Program).Assembly);
 
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<PowerPlantContext>();
+            await db.Database.MigrateAsync();
+        }
 
         if (app.Environment.IsDevelopment())
         {

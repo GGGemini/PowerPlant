@@ -21,43 +21,19 @@ public class PowerPlantContext : DbContext
         // инициализируем начальные данные
         
         // роли
-        var adminRoleId = 1;
-        var userRoleId = 2;
-        
-        b.Entity<Role>().HasData(
-            new Role { Id = adminRoleId, Name = "Admin" },
-            new Role { Id = userRoleId, Name = "User" });
+        b.Entity<Role>().HasData(SeedData.Roles);
         
         // пользователи
-        b.Entity<User>().HasData(
-            new User
-            {
-                Id = 1,
-                Surname = "Главный",
-                FirstName = "Админ",
-                Patronymic = "",
-                Email = "tanchikipro7777777@gmail.com",
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword("MainAdmin341"),
-                RoleId = adminRoleId
-            },
-            new User
-            {
-                Id = 2,
-                Surname = "Простой",
-                FirstName = "Пользователь",
-                Patronymic = "",
-                Email = "cheburashka@gmail.com",
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword("SimpleSheburashka732"),
-                RoleId = userRoleId
-            });
+        b.Entity<User>().HasData(SeedData.AdminUsers);
+        b.Entity<User>().HasData(SeedData.SimpleUsers);
         
         // станции
         var stationOneId = 1;
         var stationTwoId = 2;
         
         b.Entity<Station>().HasData(
-            new Station { Id = stationOneId, Name = "Станция 1" },
-            new Station { Id = stationTwoId, Name = "Станция 2" });
+            new Station { Id = stationOneId, Name = "Станция 1", CreatedAt = SeedData.SeedNow },
+            new Station { Id = stationTwoId, Name = "Станция 2", CreatedAt = SeedData.SeedNow });
         
         // энергоблоки
         b.Entity<EnergyBlock>().HasData(
@@ -66,15 +42,17 @@ public class PowerPlantContext : DbContext
                 Id = 1,
                 StationId       = stationOneId,
                 Name            = "Энергоблок 1.1",
-                NextServiceDate = DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(6)),
-                SensorsCount    = 42
+                NextServiceDate = new DateOnly(2025, 12, 1),
+                SensorsCount    = 42,
+                CreatedAt       = SeedData.SeedNow,
             },
             new EnergyBlock {
                 Id = 2,
                 StationId       = stationOneId,
                 Name            = "Энергоблок 1.2",
-                NextServiceDate = DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(12)),
-                SensorsCount    = 35
+                NextServiceDate = new DateOnly(2026, 4, 3),
+                SensorsCount    = 35,
+                CreatedAt       = SeedData.SeedNow,
             },
             
             // 2
@@ -82,8 +60,9 @@ public class PowerPlantContext : DbContext
                 Id = 3,
                 StationId       = stationTwoId,
                 Name            = "Энергоблок 2.1",
-                NextServiceDate = DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(9)),
-                SensorsCount    = 50
+                NextServiceDate = new DateOnly(2026, 1, 5),
+                SensorsCount    = 50,
+                CreatedAt       = SeedData.SeedNow,
             });
     }
 }

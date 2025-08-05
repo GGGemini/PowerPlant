@@ -32,9 +32,9 @@ public class StationsController(IStationService service) : ControllerBase
 
     [HttpPut("{id:int}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> Put(int id, UpdateStationRequest req, CancellationToken ct) =>
-        await service.UpdateAsync(id, req, ct) ? NoContent() : NotFound();
+        await service.UpdateAsyncClassicApproach(id, req, ct) ? NoContent() : NotFound();
     
     [HttpDelete("{id:int}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id, CancellationToken ct) =>
-        await service.DeleteAsync(id, ct) ? NoContent() : NotFound();
+        await service.DeleteAsyncClassicApproach(id, ct) ? NoContent() : NotFound();
 }

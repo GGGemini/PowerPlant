@@ -35,22 +35,48 @@ public class StationService(PowerPlantContext db, IMapper mapper) : IStationServ
         return mapper.Map<StationResponse>(entity);
     }
     
-    public async Task<bool> UpdateAsync(int id, UpdateStationRequest req, CancellationToken ct)
+    public async Task<bool> UpdateAsyncNewApproach(int id, UpdateStationRequest req, CancellationToken ct)
     {
         var updated = await db.Stations
             .Where(x => x.Id == id)
-            .ExecuteUpdateAsync(setters => setters
+            .ExecuteUpdateAsync(setters => setters // не поддерживается в тестах провайдером InMemory
                 .SetProperty(s => s.Name, req.Name), ct);
         
         return updated == 1;
     }
+
+    public async Task<bool> UpdateAsyncClassicApproach(int id, UpdateStationRequest req, CancellationToken ct)
+    {
+        var entity = await db.Stations.FindAsync([id], ct);
+        
+        if (entity == null)
+            return false;
+        
+        mapper.Map(req, entity);
+        await db.SaveChangesAsync(ct);
+        
+        return true;
+    }
     
-    public async Task<bool> DeleteAsync(int id, CancellationToken ct)
+    public async Task<bool> DeleteAsyncNewApproach(int id, CancellationToken ct)
     {
         var deleted = await db.Stations
             .Where(x => x.Id == id)
-            .ExecuteDeleteAsync(ct);
+            .ExecuteDeleteAsync(ct); // не поддерживается в тестах провайдером InMemory
         
         return deleted == 1;
+    }
+
+    public async Task<bool> DeleteAsyncClassicApproach(int id, CancellationToken ct)
+    {
+        var entity = await db.Stations.FindAsync([id], ct);
+        
+        if (entity == null)
+            return false;
+        
+        db.Stations.Remove(entity);
+        await db.SaveChangesAsync(ct);
+        
+        return true;
     }
 }

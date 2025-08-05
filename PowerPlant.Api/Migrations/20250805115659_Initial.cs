@@ -49,7 +49,7 @@ namespace PowerPlant.Api.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Surname = table.Column<string>(type: "text", nullable: false),
                     FirstName = table.Column<string>(type: "text", nullable: false),
-                    Patronymic = table.Column<string>(type: "text", nullable: false),
+                    Patronymic = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: false),
                     PasswordHash = table.Column<string>(type: "text", nullable: false),
                     RoleId = table.Column<int>(type: "integer", nullable: false)
@@ -102,8 +102,8 @@ namespace PowerPlant.Api.Migrations
                 columns: new[] { "Id", "CreatedAt", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(2478), "Станция 1" },
-                    { 2, new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(2816), "Станция 2" }
+                    { 1, new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc), "Станция 1" },
+                    { 2, new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc), "Станция 2" }
                 });
 
             migrationBuilder.InsertData(
@@ -111,9 +111,9 @@ namespace PowerPlant.Api.Migrations
                 columns: new[] { "Id", "CreatedAt", "Name", "NextServiceDate", "SensorsCount", "StationId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(3197), "Энергоблок 1.1", new DateOnly(2026, 1, 29), 42, 1 },
-                    { 2, new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(3773), "Энергоблок 1.2", new DateOnly(2026, 7, 29), 35, 1 },
-                    { 3, new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(3777), "Энергоблок 2.1", new DateOnly(2026, 4, 29), 50, 2 }
+                    { 1, new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc), "Энергоблок 1.1", new DateOnly(2025, 12, 1), 42, 1 },
+                    { 2, new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc), "Энергоблок 1.2", new DateOnly(2026, 4, 3), 35, 1 },
+                    { 3, new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc), "Энергоблок 2.1", new DateOnly(2026, 1, 5), 50, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -121,8 +121,8 @@ namespace PowerPlant.Api.Migrations
                 columns: new[] { "Id", "Email", "FirstName", "PasswordHash", "Patronymic", "RoleId", "Surname" },
                 values: new object[,]
                 {
-                    { 1, "tanchikipro7777777@gmail.com", "Админ", "$2a$11$KT.RdCMwoSLLyBK.S.XtmO0Y8hEmIvs9eXmwWrjtUzpCEkDslpMUq", "", 1, "Главный" },
-                    { 2, "cheburashka@gmail.com", "Пользователь", "$2a$11$/9PvQxEu8pBfXPGDdAZrFO9j6WPYP5vb3c7aSJvaJpivUOdlCwP0K", "", 2, "Простой" }
+                    { 1, "tanchikipro7777777@gmail.com", "Админ", "$2a$11$NSQdN6n7l1b0q6wOyJ/zDO0sVuED8h2VD8wJEDTSX51ryd8l7OKTS", null, 1, "Главный" },
+                    { 2, "cheburashka@gmail.com", "Пользователь", "$2a$11$s22XKQRuh81CSJPkU9TY6eVCR8GtcuAGeCHeWvFVfs9fNTTl6n8Xe", null, 2, "Простой" }
                 });
 
             migrationBuilder.CreateIndex(

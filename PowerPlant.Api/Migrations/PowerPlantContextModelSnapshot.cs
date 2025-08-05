@@ -56,27 +56,27 @@ namespace PowerPlant.Api.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(3197),
+                            CreatedAt = new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Энергоблок 1.1",
-                            NextServiceDate = new DateOnly(2026, 1, 29),
+                            NextServiceDate = new DateOnly(2025, 12, 1),
                             SensorsCount = 42,
                             StationId = 1
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(3773),
+                            CreatedAt = new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Энергоблок 1.2",
-                            NextServiceDate = new DateOnly(2026, 7, 29),
+                            NextServiceDate = new DateOnly(2026, 4, 3),
                             SensorsCount = 35,
                             StationId = 1
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(3777),
+                            CreatedAt = new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Энергоблок 2.1",
-                            NextServiceDate = new DateOnly(2026, 4, 29),
+                            NextServiceDate = new DateOnly(2026, 1, 5),
                             SensorsCount = 50,
                             StationId = 2
                         });
@@ -134,13 +134,13 @@ namespace PowerPlant.Api.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(2478),
+                            CreatedAt = new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Станция 1"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 7, 29, 1, 12, 52, 370, DateTimeKind.Utc).AddTicks(2816),
+                            CreatedAt = new DateTime(2025, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Станция 2"
                         });
                 });
@@ -166,7 +166,6 @@ namespace PowerPlant.Api.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Patronymic")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("RoleId")
@@ -188,8 +187,7 @@ namespace PowerPlant.Api.Migrations
                             Id = 1,
                             Email = "tanchikipro7777777@gmail.com",
                             FirstName = "Админ",
-                            PasswordHash = "$2a$11$KT.RdCMwoSLLyBK.S.XtmO0Y8hEmIvs9eXmwWrjtUzpCEkDslpMUq",
-                            Patronymic = "",
+                            PasswordHash = "$2a$11$NSQdN6n7l1b0q6wOyJ/zDO0sVuED8h2VD8wJEDTSX51ryd8l7OKTS",
                             RoleId = 1,
                             Surname = "Главный"
                         },
@@ -198,8 +196,7 @@ namespace PowerPlant.Api.Migrations
                             Id = 2,
                             Email = "cheburashka@gmail.com",
                             FirstName = "Пользователь",
-                            PasswordHash = "$2a$11$/9PvQxEu8pBfXPGDdAZrFO9j6WPYP5vb3c7aSJvaJpivUOdlCwP0K",
-                            Patronymic = "",
+                            PasswordHash = "$2a$11$s22XKQRuh81CSJPkU9TY6eVCR8GtcuAGeCHeWvFVfs9fNTTl6n8Xe",
                             RoleId = 2,
                             Surname = "Простой"
                         });

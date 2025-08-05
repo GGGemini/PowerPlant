@@ -8,7 +8,7 @@ public class User
 
     public string FirstName { get; set; } = default!;
 
-    public string Patronymic { get; set; } = default!;
+    public string? Patronymic { get; set; }
 
     public string Email { get; set; } = default!;
 
